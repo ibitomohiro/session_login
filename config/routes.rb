@@ -2,5 +2,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create, :show]
   get '/blogs', to: 'blogs#index'
-  resources :blogs, only:[:new, :create, :show, :edit, :update, :destroy]
+  resources :blogs, only:[:new, :create, :show, :edit, :update, :destroy] do
+    collection do
+      post :confirm
+    end
+  end
 end
